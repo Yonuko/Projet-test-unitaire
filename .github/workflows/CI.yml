@@ -7,7 +7,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run tests
         run: |
-          pip install numpy
           pip install pytest
           pytest test.py
       - name: build docker image
