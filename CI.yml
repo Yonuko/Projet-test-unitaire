@@ -2,9 +2,14 @@ name: CI
 on: [push]
 jobs:
   test_build_run:
-    runs-on: python-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: install
+        run: |
+          apt upgrade
+          apt install python3 -y
+          apt install pip3 -y
       - name: Run tests
         run: |
           pip install pytest
