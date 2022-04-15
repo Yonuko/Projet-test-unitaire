@@ -5,13 +5,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: docker login
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: Run tests
         run: |
           pip install pytest
           pytest test.py
       - name: build docker image
         run: 
-          docker build -t projet-test-unitaire .
+          docker build -t yonuko/projet_test_unitaire:wizzard_test_image .
       - name: run docker image
         run:
-          docker run projet-test-unitaire
+          docker run yonuko/projet_test_unitaire:wizzard_test_image
+      - name: docker push
+        run: docker push yonuko/projet_test_unitaire:wizzard_test_image
