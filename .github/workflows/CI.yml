@@ -4,14 +4,14 @@ jobs:
   test_build_run:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: Run tests
         run: |
           pip install pytest
           pytest
-      - name: build docker image
-        run: 
-          docker build -t projet-test-unitaire .
-      - name: run docker image
-        run:
-          docker run projet-test-unitaire
+     # - name: build docker image
+     #   run: 
+     #     docker build -t projet-test-unitaire .
+     # - name: run docker image
+     #   run:
+     #     docker run projet-test-unitaire
