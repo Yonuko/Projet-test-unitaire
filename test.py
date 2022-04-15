@@ -7,6 +7,10 @@ def test_person():
     assert person.life_points == 100
     pass
 
+def test_get_life():
+    person = Person("Michel")
+    assert person.get_life_points() == 100
+    pass
 
 def test_hit():
     person = Person("Michel")
@@ -29,6 +33,12 @@ def test_gained_life_points():
     assert person.get_life_points() == 100
     pass
 
+def test_wizzard():
+    wizzard = Wizard("Merlin")
+    assert wizzard.name == "Merlin"
+    assert wizzard.get_life_points() == 80
+    pass
+
 def test_wizzard_hit():
     wizzard = Wizard("Merlin")
     wizzard.hit(wizzard)
@@ -36,8 +46,7 @@ def test_wizzard_hit():
     pass
 
 def test_health_potion():
-    potion = HealthPotion()
     person = Person("Hugo")
-    potion.was_used_by(person)
+    HealthPotion.was_used_by(person)
     assert person.get_life_points() == 110
     pass

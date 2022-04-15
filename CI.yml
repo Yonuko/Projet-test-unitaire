@@ -5,18 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: install
-        run: |
-          apt upgrade
-          apt install python3 -y
-          apt install pip3 -y
       - name: Run tests
         run: |
           pip install pytest
           pytest
-      #- name: build docker image
-      #  run: 
-      #    docker build -t projet-test-unitaire .
-      #- name: run docker image
-      #  run:
-      #    docker run projet-test-unitaire
+      - name: build docker image
+        run: 
+          docker build -t projet-test-unitaire .
+      - name: run docker image
+        run:
+          docker run projet-test-unitaire

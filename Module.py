@@ -30,6 +30,7 @@ class Wizard(Person):
         
 class HealthPotion:
     
-    def was_used_by(self, person):
+    @staticmethod
+    def was_used_by(person):
         
         person.gained_life_points(10)
